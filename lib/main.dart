@@ -74,36 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: SafeArea(child: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      )),
+      body: SafeArea(
+          child: ListView(children: [
+        _menuItem("メニュー1", Icon(Icons.settings)),
+        _menuItem("メニュー2", Icon(Icons.map)),
+        _menuItem("メニュー3", Icon(Icons.room)),
+        _menuItem("メニュー4", Icon(Icons.local_shipping)),
+        _menuItem("メニュー5", Icon(Icons.airplanemode_active)),
+      ])),
       floatingActionButton: Builder(
         builder: (BuildContext ctx) {
           return FloatingActionButton(
@@ -115,6 +93,31 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
+    );
+  }
+
+  Widget _menuItem(String title, Icon icon) {
+    return GestureDetector(
+      child: Container(
+          padding: EdgeInsets.all(8.0),
+          decoration: new BoxDecoration(
+              border: new Border(
+                  bottom: BorderSide(width: 1.0, color: Colors.grey))),
+          child: Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child: icon,
+              ),
+              Text(
+                title,
+                style: TextStyle(color: Colors.black, fontSize: 18.0),
+              ),
+            ],
+          )),
+      onTap: () {
+        print("onTap called.");
+      },
     );
   }
 }
