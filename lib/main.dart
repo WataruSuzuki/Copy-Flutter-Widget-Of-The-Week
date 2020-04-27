@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_of_the_week/url_launcher.dart';
-import 'mypage.dart';
+import 'package:flutter_widget_of_the_week/dialog.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/url_launcher': (BuildContext context) => UrlLauncher(),
-        '/Menu002': (BuildContext context) => MyPage('Menu002'),
+        '/dialog': (BuildContext context) => DialogExample(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -51,8 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SafeArea(
           child: ListView(children: [
-        _menuItem("url_launcher", Icon(Icons.launch)),
-        _menuItem("Menu002", Icon(Icons.map)),
+        _menuItem("url_launcher"),
+        _menuItem("dialog"),
       ])),
       floatingActionButton: Builder(
         builder: (BuildContext ctx) {
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _menuItem(String title, Icon icon) {
+  Widget _menuItem(String title) {
     return GestureDetector(
       child: Container(
           padding: EdgeInsets.all(8.0),
@@ -77,10 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   bottom: BorderSide(width: 1.0, color: Colors.grey))),
           child: Row(
             children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10.0),
-                child: icon,
-              ),
               Text(
                 title,
                 style: TextStyle(color: Colors.black, fontSize: 18.0),
