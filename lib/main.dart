@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mypage.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/Menu001': (BuildContext context) => MyPage('Menu001'),
+        '/Menu002': (BuildContext context) => MyPage('Menu002'),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -44,11 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SafeArea(
           child: ListView(children: [
-        _menuItem("メニュー1", Icon(Icons.settings)),
-        _menuItem("メニュー2", Icon(Icons.map)),
-        _menuItem("メニュー3", Icon(Icons.room)),
-        _menuItem("メニュー4", Icon(Icons.local_shipping)),
-        _menuItem("メニュー5", Icon(Icons.airplanemode_active)),
+        _menuItem("Menu001", Icon(Icons.settings)),
+        _menuItem("Menu002", Icon(Icons.map)),
       ])),
       floatingActionButton: Builder(
         builder: (BuildContext ctx) {
@@ -84,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           )),
       onTap: () {
-        print("onTap called.");
+        Navigator.of(context).pushNamed('/$title');
       },
     );
   }
