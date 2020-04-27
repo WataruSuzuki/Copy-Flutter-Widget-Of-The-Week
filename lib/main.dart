@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_of_the_week/url_launcher.dart';
 import 'mypage.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/Menu001': (BuildContext context) => MyPage('Menu001'),
+        '/url_launcher': (BuildContext context) => UrlLauncher(),
         '/Menu002': (BuildContext context) => MyPage('Menu002'),
       },
       theme: ThemeData(
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SafeArea(
           child: ListView(children: [
-        _menuItem("Menu001", Icon(Icons.settings)),
+        _menuItem("url_launcher", Icon(Icons.launch)),
         _menuItem("Menu002", Icon(Icons.map)),
       ])),
       floatingActionButton: Builder(
